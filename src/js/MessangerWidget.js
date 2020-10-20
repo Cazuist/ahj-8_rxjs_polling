@@ -45,9 +45,9 @@ export default class MessangerWidget {
     interval(10000)
       .pipe(
         switchMap(() => ajax.getJSON(this.url)
-          .pipe(
-            catchError(() => of([])),
+          .pipe(            
             pluck('messages'),
+            catchError(() => of([])),
           )),
       )
       .subscribe({
